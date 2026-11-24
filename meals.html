@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse fresh, affordable single-serving meal kits for university students in Antigonish. Choose your meal and schedule pickup near campus.">
+  <meta name="keywords" content="affordable student meal kits, university student meals, meal kits Antigonish, StFX student meals">
+  <title>Our Meals | Campus Kits Antigonish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Campus Kits home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 23h28c-1.8 8.5-7.4 13-14 13S11.8 31.5 10 23Z"/><path d="M24 23c-1-8.4 4.4-13.4 12.5-13.1.5 7.4-4.2 12.3-12.5 13.1Z"/><path d="M24 23c-7.5-.5-11.5-4.6-11.1-10.2 6.6-.1 10.7 3.4 11.1 10.2Z"/></svg></span>
+        <span><strong>Campus</strong> Kits</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links">
+        <a href="index.html">Home</a>
+        <a href="meals.html" aria-current="page">Our Meals</a>
+        <a href="index.html#how">How It Works</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <button class="cart-button" type="button" data-open-cart aria-label="Open shopping cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6M10 20h.01M18 20h.01"/></svg><span class="cart-count" data-cart-count>0</span></button>
+        <a class="button button-small" href="product.html">Order Now</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="meals-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Our Meals</span></div>
+        <p class="eyebrow">Fresh, pre-portioned, made for one</p>
+        <h1>Find your next favourite.</h1>
+        <p>Simple student meals, ready for pickup near campus. Choose a kit to see ingredients, cooking steps and pickup options.</p>
+      </div>
+    </section>
+
+    <section class="section meals-page-list">
+      <div class="container">
+        <div class="meal-grid">
+          <article class="meal-card">
+            <a class="meal-image" href="product.html?meal=chicken-pasta"><img src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=700&q=82" alt="Creamy garlic chicken pasta" width="420" height="300"></a>
+            <div class="meal-card-body"><div class="meal-meta"><span>20 min</span><span>Beginner</span></div><h2>Creamy Garlic Chicken Pasta</h2><p>A comforting garlic cream sauce with tender chicken and fresh spinach.</p><div class="price-row"><strong>$9.49 <small>CAD</small></strong><a class="button button-card" href="product.html?meal=chicken-pasta">Choose Meal</a></div></div>
+          </article>
+          <article class="meal-card">
+            <a class="meal-image" href="product.html?meal=teriyaki-bowl"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=700&q=82" alt="Teriyaki chicken rice bowl with vegetables" width="420" height="300"></a>
+            <div class="meal-card-body"><div class="meal-meta"><span>25 min</span><span>Popular</span></div><h2>Teriyaki Chicken Rice Bowl</h2><p>Sweet and savoury teriyaki chicken with rice and crisp vegetables.</p><div class="price-row"><strong>$9.99 <small>CAD</small></strong><a class="button button-card" href="product.html?meal=teriyaki-bowl">Choose Meal</a></div></div>
+          </article>
+          <article class="meal-card">
+            <a class="meal-image" href="product.html?meal=black-bean-bowl"><img src="https://images.unsplash.com/photo-1543362906-acfc16c67564?auto=format&fit=crop&w=700&q=82" alt="Southwest black bean bowl with vegetables" width="420" height="300"></a>
+            <div class="meal-card-body"><div class="meal-meta"><span>15 min</span><span>Vegetarian</span></div><h2>Southwest Black Bean Bowl</h2><p>A zesty black bean bowl with corn, peppers and a lime finish.</p><div class="price-row"><strong>$7.99 <small>CAD</small></strong><a class="button button-card" href="product.html?meal=black-bean-bowl">Choose Meal</a></div></div>
+          </article>
+          <article class="meal-card">
+            <a class="meal-image" href="product.html?meal=pesto-pasta"><img src="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=700&q=82" alt="Tomato and basil pesto pasta" width="420" height="300"></a>
+            <div class="meal-card-body"><div class="meal-meta"><span>20 min</span><span>Vegetarian</span></div><h2>Tomato and Basil Pesto Pasta</h2><p>Fresh pesto, cherry tomatoes and basil tossed with tender pasta.</p><div class="price-row"><strong>$8.49 <small>CAD</small></strong><a class="button button-card" href="product.html?meal=pesto-pasta">Choose Meal</a></div></div>
+          </article>
+        </div>
+        <p class="meals-page-note">One serving per kit. Order up to three meals per pickup day.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer-compact">
+    <div class="container footer-bottom"><p>© 2026 Campus Kits. Prototype demonstration.</p><div><a href="index.html">Home</a><a href="index.html#faq">Help</a></div></div>
+  </footer>
+
+  <div class="cart-overlay" data-cart-overlay></div>
+  <aside class="cart-panel" data-cart-panel aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header"><h2>Your Cart</h2><button class="icon-button" data-close-cart aria-label="Close cart">×</button></div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-footer"><div class="cart-total"><span>Subtotal</span><strong data-cart-subtotal>$0.00 CAD</strong></div><a class="button cart-checkout" href="product.html#checkout">Continue to Checkout</a></div>
+  </aside>
+  <script src="script.js"></script>
+</body>
+</html>

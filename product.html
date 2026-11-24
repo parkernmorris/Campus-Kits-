@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse and order affordable single-serving meal kits with convenient pickup near StFX in Antigonish, Nova Scotia.">
+  <meta name="keywords" content="meal kits Antigonish, StFX student meals, single-serving meal kits, affordable meals for students">
+  <title>Order Meal Kits | Campus Kits Antigonish</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="product-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="Campus Kits home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 48 48"><path d="M10 23h28c-1.8 8.5-7.4 13-14 13S11.8 31.5 10 23Z"/><path d="M24 23c-1-8.4 4.4-13.4 12.5-13.1.5 7.4-4.2 12.3-12.5 13.1Z"/><path d="M24 23c-7.5-.5-11.5-4.6-11.1-10.2 6.6-.1 10.7 3.4 11.1 10.2Z"/></svg></span><span><strong>Campus</strong> Kits</span></a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu"><span></span><span></span><span></span></button>
+      <div class="nav-links" id="nav-links"><a href="index.html">Home</a><a href="meals.html">Our Meals</a><a href="index.html#how">How It Works</a><a href="index.html#about">About Us</a><a href="index.html#faq">FAQ</a></div>
+      <div class="nav-actions"><button class="cart-button" type="button" data-open-cart aria-label="Open shopping cart"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6M10 20h.01M18 20h.01"/></svg><span class="cart-count" data-cart-count>0</span></button><a class="button button-small" href="product.html">Order Now</a></div>
+    </nav>
+  </header>
+
+  <main id="main" class="product-main">
+    <div class="container breadcrumb"><a href="index.html">Home</a><span>/</span><a href="meals.html">Our Meals</a><span>/</span><span>Meal details</span></div>
+    <section class="container product-layout">
+      <div class="product-gallery">
+        <img id="product-main-image" src="https://images.unsplash.com/photo-1645112411341-6c4fd023714a?auto=format&fit=crop&w=900&q=85" alt="Creamy garlic chicken pasta" width="700" height="620">
+        <img id="product-detail-image" src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?auto=format&fit=crop&w=500&q=82" alt="Fresh pre-portioned ingredients for the meal kit" width="700" height="250" loading="lazy">
+      </div>
+      <div class="product-info">
+        <p class="eyebrow">Single-serving meal kit</p>
+        <h1 id="product-name">Creamy Garlic Chicken Pasta</h1>
+        <div class="product-price" id="product-price">$9.49 <span>CAD</span></div>
+        <div class="product-facts"><span><b>◷</b><small>Preparation</small><strong id="product-time">20 minutes</strong></span><span><b>♙</b><small>Serving</small><strong>1 person</strong></span><span><b>★</b><small>Difficulty</small><strong id="product-difficulty">Beginner</strong></span></div>
+        <p class="availability in-stock" id="availability" role="status">● In stock</p>
+        <p class="product-description" id="product-description">Enjoy a comforting, creamy garlic chicken pasta made with fresh, pre-portioned ingredients. Designed for busy university students, this meal is quick to prepare, requires minimal cooking equipment and provides exactly enough ingredients for one serving.</p>
+
+        <div class="selector-block">
+          <label>Choose a meal</label>
+          <div class="meal-selector" id="meal-selector" role="group" aria-label="Choose a meal kit"></div>
+        </div>
+
+        <div class="order-options">
+          <div class="field"><label for="quantity">Quantity</label><select id="quantity"><option value="1">1 meal</option><option value="2">2 meals</option><option value="3">3 meals</option></select></div>
+          <div class="field"><label for="pickup-date">Pickup date</label><input id="pickup-date" type="date" required></div>
+          <div class="field"><label for="pickup-time">Pickup time</label><select id="pickup-time"><option value="">Select a time</option><option>11:30 AM–12:30 PM</option><option>2:00 PM–3:00 PM</option><option>4:30 PM–5:30 PM</option></select></div>
+        </div>
+        <p class="daily-limit" id="daily-limit">Order up to 3 meals for the same pickup day.</p>
+        <div class="total-row"><span>Total</span><strong id="order-total">$9.49 CAD</strong></div>
+        <button class="button button-wide" id="add-to-cart" type="button">Add to Cart</button>
+        <p class="pickup-location"><b>Pickup location:</b> Campus Kits pickup point, 118 University Avenue, Antigonish, NS (fictional).</p>
+      </div>
+    </section>
+
+    <section class="container meal-details">
+      <article class="included">
+        <p class="eyebrow">Pre-portioned &amp; ready</p><h2>What's Included</h2>
+        <ul class="ingredient-list" id="ingredient-list"></ul>
+        <p class="allergen"><strong>Allergen information:</strong> <span id="allergens">Wheat and dairy</span></p>
+      </article>
+      <article class="instructions">
+        <p class="eyebrow">Quick &amp; easy</p><h2>Cooking Instructions</h2>
+        <ol id="cooking-instructions"></ol>
+        <details><summary>Food safety &amp; equipment</summary><p id="equipment"></p><p>Cook chicken to an internal temperature of 74°C (165°F). Wash hands and surfaces, keep raw meat chilled, and clean utensils before use.</p></details>
+      </article>
+    </section>
+
+    <section class="checkout-section" id="checkout">
+      <div class="container">
+        <button class="button button-secondary" id="open-checkout" type="button">Open Demo Checkout</button>
+      </div>
+    </section>
+
+    <section class="container order-progress" id="order-progress" hidden aria-live="polite">
+      <div class="order-progress-card">
+        <p class="eyebrow">Demo order tracking</p>
+        <h2>Order Progress</h2>
+        <p id="order-progress-details"></p>
+        <p id="order-progress-status"></p>
+        <button class="button" id="order-progress-action" type="button"></button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer footer-compact">
+    <div class="container footer-bottom"><p>© 2026 Campus Kits. Prototype demonstration.</p><div><a href="index.html#faq">Help</a><a href="#">Privacy</a></div></div>
+  </footer>
+
+  <div class="cart-overlay" data-cart-overlay></div>
+  <aside class="cart-panel" data-cart-panel aria-label="Shopping cart" aria-hidden="true">
+    <div class="cart-header"><h2>Your Cart</h2><button class="icon-button" data-close-cart aria-label="Close cart">×</button></div>
+    <div class="cart-items" data-cart-items></div>
+    <div class="cart-footer"><div class="cart-total"><span>Subtotal</span><strong data-cart-subtotal>$0.00 CAD</strong></div><button class="button cart-checkout" id="cart-checkout" type="button">Continue to Checkout</button></div>
+  </aside>
+
+  <dialog class="checkout-modal" id="checkout-modal" aria-labelledby="checkout-title">
+    <div class="modal-header"><div><p class="eyebrow">Demonstration only</p><h2 id="checkout-title">Demo Checkout</h2></div><button class="icon-button" id="close-checkout" type="button" aria-label="Close checkout">×</button></div>
+    <form id="checkout-form">
+      <div class="checkout-grid">
+        <div>
+          <h3>Order Summary</h3>
+          <div class="checkout-summary" id="checkout-summary"></div>
+        </div>
+        <div>
+          <h3>Customer details</h3>
+          <div class="checkout-fields"><label>Full name<input name="name" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Phone<input name="phone" type="tel" autocomplete="tel" required></label></div>
+          <fieldset class="payment-options"><legend>Simulated payment</legend><label><input type="radio" name="payment" value="success" checked> Successful payment</label><label><input type="radio" name="payment" value="failure"> Simulate unsuccessful payment</label></fieldset>
+        </div>
+      </div>
+      <p class="demo-warning">This is a demo checkout. Do not enter real credit card or payment information.</p>
+      <p class="checkout-error" id="checkout-error" role="alert"></p>
+      <button class="button button-wide" id="review-cart-after-stock" type="button" hidden>Review cart and change meals</button>
+      <div class="checkout-actions"><button class="button button-wide" id="confirm-order" type="submit">Confirm Order</button><button class="button button-secondary button-wide" id="cancel-checkout" type="button">Cancel Checkout</button></div>
+    </form>
+    <div class="confirmation" id="confirmation" hidden>
+      <div class="confirmation-icon">✓</div>
+      <h2>You're all set! Your Campus Kits order is confirmed. We'll have your fresh ingredients ready for your scheduled pickup.</h2>
+      <p id="confirmation-details"></p>
+      <p id="confirmation-email"></p>
+      <p class="staff-notice" id="staff-notice"></p>
+      <button class="button" id="finish-order" type="button">View Order Progress</button>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
