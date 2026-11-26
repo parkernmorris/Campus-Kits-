@@ -130,11 +130,16 @@
 
     <section class="newsletter">
       <div class="container newsletter-inner">
-        <div><p class="eyebrow">Stay in the loop</p><h2>Good Food Starts Here.</h2><p>Get new meal announcements, weekly menus, student promotions and simple cooking tips.</p></div>
+        <div class="newsletter-copy">
+          <p class="eyebrow">New customer offer</p>
+          <div class="promo-badge" aria-label="15 percent off">15% OFF</div>
+          <h2>Save on Your First Order.</h2>
+          <p>Join Campus Kits and get 15% off your first meal-kit order. We’ll also send new menus and student-friendly offers.</p>
+        </div>
         <form id="newsletter-form" class="newsletter-form">
           <label class="sr-only" for="newsletter-email">Email address</label>
-          <input id="newsletter-email" type="email" placeholder="you@example.com" required>
-          <button class="button" type="submit">Subscribe</button>
+          <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="button" type="submit">Get 15% Off</button>
         </form>
         <p class="form-message" id="newsletter-message" role="status"></p>
       </div>

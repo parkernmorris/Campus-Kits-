@@ -134,8 +134,17 @@ function setupHomepage() {
     event.preventDefault();
     const email = document.querySelector("#newsletter-email").value.trim();
     if (!email) return;
-    document.querySelector("#newsletter-message").textContent = "You're subscribed! Check your inbox for a demo confirmation.";
-    logEvent("newsletter_signup", { prototype: true });
+    const simulatedEmails = JSON.parse(localStorage.getItem(emailLogKey) || "[]");
+    simulatedEmails.push({
+      email,
+      type: "welcome-discount",
+      code: "CAMPUS15",
+      status: "simulated-not-sent",
+      createdAt: new Date().toISOString()
+    });
+    localStorage.setItem(emailLogKey, JSON.stringify(simulatedEmails));
+    document.querySelector("#newsletter-message").textContent = "Success! Use code CAMPUS15 for 15% off your first order.";
+    logEvent("newsletter_signup", { discountCode: "CAMPUS15", prototype: true });
     form.reset();
   });
   document.querySelectorAll(".meal-card [href*='meal=']").forEach(link => link.addEventListener("click", () => {
@@ -260,6 +269,28 @@ function setupCheckout(refreshProductAvailability) {
   const confirmButton = document.querySelector("#confirm-order");
   const errorMessage = document.querySelector("#checkout-error");
   const reviewCartButton = document.querySelector("#review-cart-after-stock");
+  const promoInput = document.querySelector("#promo-code");
+  const promoButton = document.querySelector("#apply-promo-code");
+  const promoMessage = document.querySelector("#promo-code-message");
+  let promoApplied = false;
+
+  function getCheckoutTotals() {
+    const subtotal = getCart().reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const discount = promoApplied ? subtotal * 0.15 : 0;
+    return { subtotal, discount, total: subtotal - discount };
+  }
+
+  function renderCheckoutSummary() {
+    const cart = getCart();
+    const summary = document.querySelector("#checkout-summary");
+    const { subtotal, discount, total } = getCheckoutTotals();
+    summary.innerHTML = cart.map(item =>
+      `<div class="checkout-line"><strong>${item.quantity} × ${products[item.id].name}</strong><br>${item.date} · ${item.time}<br>${money(item.price * item.quantity)}</div>`
+    ).join("") +
+      `<div class="checkout-line"><strong>Subtotal: ${money(subtotal)}</strong></div>` +
+      (promoApplied ? `<div class="checkout-line promo-discount"><strong>Promo discount (15%): −${money(discount)}</strong></div>` : "") +
+      `<div class="checkout-line"><strong>Total: ${money(total)}</strong></div>`;
+  }
 
   function renderOrderProgress() {
     const latestOrder = getOrders().at(-1);
@@ -295,9 +326,11 @@ function setupCheckout(refreshProductAvailability) {
       return;
     }
     closeCart();
-    const summary = document.querySelector("#checkout-summary");
-    const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-    summary.innerHTML = cart.map(item => `<div class="checkout-line"><strong>${item.quantity} × ${products[item.id].name}</strong><br>${item.date} · ${item.time}<br>${money(item.price * item.quantity)}</div>`).join("") + `<div class="checkout-line"><strong>Total: ${money(subtotal)}</strong></div>`;
+    promoApplied = false;
+    promoInput.value = "";
+    promoMessage.textContent = "";
+    promoMessage.className = "";
+    renderCheckoutSummary();
     document.querySelector("#confirmation").hidden = true;
     form.hidden = false;
     errorMessage.textContent = "";
@@ -308,6 +341,29 @@ function setupCheckout(refreshProductAvailability) {
   }
   openButton?.addEventListener("click", openCheckout);
   cartButton?.addEventListener("click", openCheckout);
+  function applyPromoCode() {
+    const code = promoInput.value.trim().toUpperCase();
+    if (code === "CAMPUS15") {
+      promoApplied = true;
+      promoMessage.textContent = "CAMPUS15 applied: 15% off your order.";
+      promoMessage.className = "promo-success";
+      logEvent("promo_code_applied", { code: "CAMPUS15" });
+      renderCheckoutSummary();
+    } else {
+      promoApplied = false;
+      promoMessage.textContent = code ? "That promo code is not valid." : "Enter a promo code.";
+      promoMessage.className = "promo-error";
+      logEvent("promo_code_rejected", { code });
+      renderCheckoutSummary();
+    }
+  }
+  promoButton?.addEventListener("click", applyPromoCode);
+  promoInput?.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      applyPromoCode();
+    }
+  });
   closeButton?.addEventListener("click", () => modal.close());
   document.querySelector("#cancel-checkout")?.addEventListener("click", () => modal.close());
   reviewCartButton?.addEventListener("click", () => {
@@ -367,10 +423,13 @@ function setupCheckout(refreshProductAvailability) {
 
     const customerEmail = new FormData(form).get("email");
     const orderNumber = `CK-${Date.now().toString().slice(-8)}`;
-    const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    const { subtotal, discount, total } = getCheckoutTotals();
     const order = {
       orderNumber,
       items: cart.map(item => ({ ...item })),
+      subtotal,
+      discount,
+      promoCode: promoApplied ? "CAMPUS15" : null,
       total,
       status: "confirmed",
       createdAt: new Date().toISOString()
